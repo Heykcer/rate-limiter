@@ -1,0 +1,26 @@
+{
+  "name": "rate-limiter",
+  "version": "1.0.0",
+  "description": "api-gateway-rate-limiter/ ├── src/ │   ├── config/             # App configs & rate-limit rules │   │   ├── env.js │   │   └── rules.js │   ├── constants/          # Fixed HTTP status codes & messages │   │   └── http.js │   ├── middlewares/        # Express middleware handlers │   │   ├── rateLimiter.js  # Main rate-limiting middleware │   │   ├── proxy.js        # Reverse proxy request forwarder │   │   └── errorHandler.js │   ├── services/           # External service handlers │   │   └── redis.js        # Redis client & connection management │   ├── strategies/         # Core rate-limiting algorithm logic │   │   ├── slidingWindow.js │   │   ├── tokenBucket.js │   │   └── lua/            # Optional atomic Lua scripts for Redis │   │       └── sliding_window.lua │   ├── utils/              # Utility functions │   │   ├── keyExtractor.js # Extracts IP / API Key / JWT sub │   │   └── logger.js │   ├── app.js              # Express app setup & middleware pipeline │   └── server.js           # Server entry point & graceful shutdown ├── tests/                  # Unit and integration tests │   ├── unit/ │   └── integration/ ├── .env.example ├── package.json └── README.md",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heykcer/rate-limiter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Heykcer/rate-limiter/issues"
+  },
+  "homepage": "https://github.com/Heykcer/rate-limiter#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "ioredis": "^6.0.0"
+  }
+}
