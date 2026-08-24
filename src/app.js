@@ -1,6 +1,6 @@
 import express from 'express';
 import hideIP from './utils/hideIP.js';
-import ipRateLimiter from './middlewares/ratelimiter.js';
+import ipRateLimiter from './middlewares/rateLimiter.js';
 
 
 const app=express();
