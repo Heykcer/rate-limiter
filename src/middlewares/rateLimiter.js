@@ -1,4 +1,5 @@
 import hideIP from '../utils/hideIP.js';
+import { extractKey } from '../utils/keyExtractor.js';
 import { TokenBucket } from '../strategies/tokenBucket.js';
 import { SlidingWindow } from '../strategies/slidingWindow.js';
 
@@ -12,7 +13,7 @@ const swClients = new Map();
 
 export const ipRateLimiter = ((req, res, next) => {
     // Get client IP address
-    const clientIP = req.ip || req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const clientIP = extractKey(req);
     const myIP = hideIP(clientIP);
     
     if (!swClients.has(myIP)) {
@@ -41,7 +42,7 @@ const tbClients = new Map();
 
 export const tokenBucketRateLimiter = ((req, res, next) => {
     // Get client IP address
-    const clientIP = req.ip || req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const clientIP = extractKey(req);
     const myIP = hideIP(clientIP);
     
     // Initialize bucket for new IPs
